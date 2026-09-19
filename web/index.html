@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101c21" />
+    <title>LekhaSignal — Revenue Reliability Control Plane</title>
+    <link rel="stylesheet" href="/assets/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand"><span class="glyph">ल</span><div><p>LekhaSignal</p><span>Revenue reliability control plane</span></div></div>
+        <div class="live"><i></i> Snowflake deployment blueprint · demo mode</div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">LEKHA = LEDGER · SIGNAL = EVIDENCE</p>
+          <h1>Know when revenue data is safe to trust.</h1>
+          <p class="lede">LekhaSignal connects ingestion, Snowflake transformations, data contracts, reconciliation controls, cost telemetry, and a calm operator investigation flow.</p>
+        </div>
+        <aside class="trust-card"><p>Operator boundary</p><strong>Read first.<br />Act only with approval.</strong><span>Agents investigate with narrow MCP tools. They never mutate data, publish a mart, resize compute, or replay a pipeline by themselves.</span></aside>
+      </section>
+
+      <section class="metrics" id="metrics" aria-label="Reliability service levels"></section>
+
+      <section class="workbench">
+        <article class="conversation">
+          <div class="section-heading"><div><p class="eyebrow">CONVERSATIONAL INCIDENT DESK</p><h2>Ask it like an operator.</h2></div><span class="chip">MCP tools: read-only</span></div>
+          <div id="dialogue" class="dialogue" aria-live="polite">
+            <article class="assistant-message"><span>LekhaSignal</span><p>I can investigate freshness, duplicate payments, schema drift, CDC gaps, dbt test failures, or warehouse cost. What is not looking right?</p></article>
+          </div>
+          <form id="investigation-form" class="prompt">
+            <label for="question">Investigation request</label>
+            <div><textarea id="question" required maxlength="1200" placeholder="Example: Why is our cash dashboard double-counting payments today?"></textarea><button type="submit">Investigate</button></div>
+            <p>Try: “Why is revenue close stale?” · “Did a source schema change?” · “Why did warehouse cost spike?”</p>
+          </form>
+        </article>
+
+        <aside class="architecture">
+          <p class="eyebrow">OPERATING PATH</p>
+          <ol>
+            <li><b>1</b><div><strong>Capture</strong><span>Postgres CDC, billing APIs, immutable files</span></div></li>
+            <li><b>2</b><div><strong>Govern</strong><span>Snowpipe, contracts, RBAC, masking</span></div></li>
+            <li><b>3</b><div><strong>Transform</strong><span>Streams, Tasks, dbt, Dynamic Tables</span></div></li>
+            <li><b>4</b><div><strong>Prove</strong><span>DMFs, reconciliations, lineage, cost</span></div></li>
+            <li><b>5</b><div><strong>Recover</strong><span>Investigate → approve → replay → verify</span></div></li>
+          </ol>
+          <p class="small-note">Built for a finance team that needs trusted revenue data, not another dashboard full of raw alerts.</p>
+        </aside>
+      </section>
+
+      <section id="incident" class="incident hidden" aria-live="polite"></section>
+      <section class="timeline-section"><div class="section-heading"><div><p class="eyebrow">CONTROL PLANE</p><h2>Recent evidence</h2></div><span class="chip">OpenTelemetry-ready event model</span></div><div id="timeline" class="timeline"></div></section>
+    </main>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
