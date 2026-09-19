@@ -4,7 +4,7 @@ LekhaSignal is a portfolio-grade data-engineering platform for a common business
 
 It combines CDC and batch ingestion, Snowflake-native processing, dbt marts, orchestration, data contracts, reconciliation controls, cost attribution, and a conversational incident desk. The agent layer is intentionally bounded: it investigates with read-only MCP tools and requires human approval for any recovery action.
 
-> All source events and incidents are simulated. The live demo is a deterministic operator training surface; it does not connect to an external Snowflake account unless credentials and integrations are configured separately.
+> All source events and incidents are simulated. The public operator console is a deterministic operator-training surface and deliberately has no Snowflake credential. The Snowflake-native pipeline is separately reproducible and has been executed against an authorized trial account; see [the execution record](docs/snowflake_execution.md).
 
 **Live operator console:** https://lekhasignal-ciiiagnzaq-uk.a.run.app
 
@@ -47,11 +47,12 @@ Open `http://localhost:8080`.
 
 ## Snowflake deployment assets
 
-1. Apply `snowflake/sql/00_platform.sql` with a controlled platform-admin role.
-2. Configure a least-privilege GCS storage integration and replace the commented stage/pipe blueprint.
-3. Apply `snowflake/sql/10_revenue_pipeline.sql`.
-4. Configure the dbt profile, then run `dbt build` inside `snowflake/dbt/`.
-5. Deploy Airflow and Terraform only with real, non-committed credentials.
+1. Apply `snowflake/sql/00_platform.sql` with a controlled platform-admin role. It uses an X-Small transformation warehouse, 60-second auto-suspend, and a 20-credit monthly monitor.
+2. Apply `snowflake/sql/10_revenue_pipeline.sql`.
+3. For an end-to-end non-production demonstration, run `snowflake/sql/20_demo_seed.sql`; it only creates synthetic finance events and a reconciliation view.
+4. Configure a least-privilege GCS storage integration and replace the commented stage/pipe blueprint before connecting a real source.
+5. Configure the dbt profile, then run `dbt build` inside `snowflake/dbt/`.
+6. Deploy Airflow and Terraform only with real, non-committed credentials.
 
 The demo delivery and production-hardening boundaries are documented in [docs/deployment.md](docs/deployment.md).
 
