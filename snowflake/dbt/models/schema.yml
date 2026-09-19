@@ -1,0 +1,16 @@
+version: 2
+sources:
+  - name: raw
+    database: LEKHASIGNAL
+    schema: RAW
+    tables:
+      - name: payment_events
+        freshness: {warn_after: {count: 30, period: minute}, error_after: {count: 60, period: minute}}
+        columns:
+          - name: event_id
+            tests: [not_null, unique]
+models:
+  - name: fct_daily_cash_position
+    columns:
+      - name: cash_date
+        tests: [not_null, unique]

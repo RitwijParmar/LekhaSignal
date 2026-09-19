@@ -1,0 +1,9 @@
+name: lekhasignal
+version: '1.0'
+config-version: 2
+profile: lekhasignal
+model-paths: [models]
+models:
+  lekhasignal:
+    staging: {+materialized: view}
+    marts: {+materialized: incremental, +on_schema_change: fail}
