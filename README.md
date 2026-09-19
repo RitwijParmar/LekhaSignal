@@ -6,6 +6,8 @@ It combines CDC and batch ingestion, Snowflake-native processing, dbt marts, orc
 
 > All source events and incidents are simulated. The live demo is a deterministic operator training surface; it does not connect to an external Snowflake account unless credentials and integrations are configured separately.
 
+**Live operator console:** https://lekhasignal-ciiiagnzaq-uk.a.run.app
+
 ## Demo experience
 
 Ask the operator console naturally:
