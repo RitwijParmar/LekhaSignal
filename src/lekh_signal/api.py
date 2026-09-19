@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -9,8 +10,10 @@ from fastapi.staticfiles import StaticFiles
 from .contracts import OperatorRequest
 from .engine import investigate, platform_metrics, sample_timeline
 
-ROOT = Path(__file__).resolve().parents[2]
-WEB = ROOT / "web"
+# In local editable installs the repository root is two parents above this module.
+# In the container the source package is installed into site-packages, so Docker
+# supplies an explicit immutable web-asset directory.
+WEB = Path(os.environ.get("LEKHASIGNAL_WEB_DIR", Path(__file__).resolve().parents[2] / "web"))
 app = FastAPI(title="LekhaSignal", docs_url=None, redoc_url=None)
 app.mount("/assets", StaticFiles(directory=WEB), name="assets")
 
