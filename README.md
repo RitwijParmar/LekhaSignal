@@ -6,7 +6,9 @@ It combines CDC and batch ingestion, Snowflake-native processing, dbt marts, orc
 
 > All source events and incidents are simulated. The public operator console is a deterministic operator-training surface and deliberately has no Snowflake credential. The Snowflake-native pipeline is separately reproducible and has been executed against an authorized trial account; see [the execution record](docs/snowflake_execution.md).
 
-**Live operator console:** https://lekhasignal-ciiiagnzaq-uk.a.run.app
+**Operator console:** run the deterministic training surface locally with the
+quickstart below. The repository separately records the verified Snowflake
+execution in [docs/snowflake_execution.md](docs/snowflake_execution.md).
 
 ## Demo experience
 
